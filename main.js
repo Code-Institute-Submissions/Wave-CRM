@@ -26,6 +26,10 @@ function loadDoc() {
                         name
                         firstName
                         lastName
+                        mobile
+                        address {
+                          addressLine1
+                        }
                       } 
                     } 
                   }
@@ -40,7 +44,9 @@ function transformData(item, index) {
     id: item.node.id, 
     name: item.node.name, 
     firstName: item.node.firstName,
-    lastName: item.node.lastName
+    lastName: item.node.lastName,
+    mobile: item.node.mobile,
+    address: item.node.address.addressLine1
   };
  
   return customers;
@@ -49,7 +55,16 @@ function transformData(item, index) {
 function useData(data) {
   var i;
   for(i = 0; i < data.length; i++) {
-    document.getElementById("demo").innerHTML += data[i].id;
+    document.getElementById("table-body").innerHTML += `
+      <tr id="${data[i].id}">
+          <th scope="row">${i + 1}</th>
+          <td class="company">${data[i].name}</td>
+          <td class="first-name">${data[i].firstName}</td>
+          <td class="last-name">${data[i].lastName}</td>
+          <td class="mobile">${data[i].mobile}</td>
+          <td class="address">${data[i].address}</td>
+      </tr>
+    `;
   }
 }
 
