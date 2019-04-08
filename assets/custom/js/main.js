@@ -75,9 +75,9 @@ function initMap(data) {
   var geocoder = new google.maps.Geocoder();
   var addresses = customerAddresses(data);
   
-    addresses.map(function(address) {
-      geocodeAddress(address, geocoder, map);
-    });
+  var markers = addresses.map(function(address) {
+    geocodeAddress(address, geocoder, map);
+  });
 }
 
 function geocodeAddress(address, geocoder, resultsMap) {
