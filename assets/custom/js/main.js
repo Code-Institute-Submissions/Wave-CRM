@@ -6,8 +6,9 @@ function loadDoc() {
     if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(this.responseText);
       var prettyData = data.data.business.customers.edges.map(transformData);
-      useData(prettyData);
+//      useData(prettyData);
       initMap(prettyData);
+      makeGraphs(prettyData)
     }
   };
   
@@ -26,6 +27,8 @@ function loadDoc() {
                         firstName
                         lastName
                         mobile
+                        internalNotes
+                        createdAt
                         address {
                           addressLine1
                         }
@@ -45,26 +48,28 @@ function transformData(item, index) {
     firstName: item.node.firstName,
     lastName: item.node.lastName,
     mobile: item.node.mobile,
+    notes: item.node.internalNotes,
+    created: item.node.createdAt.slice(0, 4),
     address: item.node.address.addressLine1
   };
   return customers;
 }
 
-function useData(data) {
-  var i;
-  for(i = 0; i < data.length; i++) {
-    document.getElementById("table-body").innerHTML += `
-      <tr id="${data[i].id}">
-          <th scope="row">${i + 1}</th>
-          <td class="company">${data[i].name}</td>
-          <td class="first-name">${data[i].firstName}</td>
-          <td class="last-name">${data[i].lastName}</td>
-          <td class="mobile">${data[i].mobile}</td>
-          <td class="address">${data[i].address}</td>
-      </tr>
-    `;
-  }
-}
+// function useData(data) {
+//   var i;
+//   for(i = 0; i < data.length; i++) {
+//     document.getElementById("table-body").innerHTML += `
+//       <tr id="${data[i].id}">
+//           <th scope="row">${i + 1}</th>
+//           <td class="company">${data[i].name}</td>
+//           <td class="first-name">${data[i].firstName}</td>
+//           <td class="last-name">${data[i].lastName}</td>
+//           <td class="mobile">${data[i].mobile}</td>
+//           <td class="address">${data[i].address}</td>
+//       </tr>
+//     `;
+//   }
+// }
 
 function initMap(data) {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -102,4 +107,79 @@ function customerAddresses(data) {
     }
   }
   return customerAddressArray;
+}
+
+
+
+
+
+
+
+
+
+    
+function makeGraphs(data) {
+    
+  var ndx = crossfilter(data);
+  
+  pieChart(ndx);
+  barChart(ndx);
+  table(ndx);
+    
+  dc.renderAll();
+
+}
+
+function barChart(ndx) {
+  var dim = ndx.dimension(dc.pluck('created'));
+  var group = dim.group();
+  
+  dc.barChart("#bar-chart")
+    .width(350)
+    .height(250)
+    .margins({top: 10, right: 50, bottom: 30, left: 50})
+    .dimension(dim)
+    .group(group)
+    .transitionDuration(500)
+    .x(d3.scale.ordinal())
+    .xUnits(dc.units.ordinal)
+    .xAxisLabel("Year customer was created")
+    .yAxisLabel("Number of customers")
+    .yAxis().ticks(10);
+}
+
+function pieChart(ndx) {
+  var dim = ndx.dimension(dc.pluck('notes'));
+  var group = dim.group();
+  
+  dc.pieChart("#pie-chart")
+    .width(200)
+    .height(200)
+    .innerRadius(25)
+    .label(function(d) {
+				return d.key; 
+		})
+    .dimension(dim)
+    .group(group);
+}
+
+function table(ndx) {
+  var dim = ndx.dimension(dc.pluck('name'));
+  var group = dim.group();
+  
+  dc.dataTable("#table")
+    .width(500)
+    .height(500)
+    .dimension(dim)
+    .group(
+      function (data) { return ''; })
+    .columns([//'Name', 'Notes'
+      function(d) { return d.name; },
+      function(d) { return d.firstName; },
+      function(d) { return d.lastName; },
+      function(d) { return d.mobile; },
+      function(d) { return d.address; }
+//      function(d) { return numberFormat(d.high - d.low); },
+//      function(d) { return d.volume; }
+    ]);
 }
