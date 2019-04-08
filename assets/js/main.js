@@ -7,6 +7,7 @@ function loadDoc() {
       var data = JSON.parse(this.responseText);
       var prettyData = data.data.business.customers.edges.map(transformData);
       useData(prettyData);
+      initMap(prettyData);
     }
   };
   
@@ -46,7 +47,6 @@ function transformData(item, index) {
     mobile: item.node.mobile,
     address: item.node.address.addressLine1
   };
- 
   return customers;
 }
 
@@ -66,59 +66,40 @@ function useData(data) {
   }
 }
 
-function initMap() {
-var locations = [
-      ['Bondi Beach', '850 Bay st 04 Toronto, Ont'],
-      ['Coogee Beach', '932 Bay Street, Toronto, ON M5S 1B1'],
-      ['Cronulla Beach', '61 Town Centre Court, Toronto, ON M1P'],
-      ['Manly Beach', '832 Bay Street, Toronto, ON M5S 1B1'],
-      ['Maroubra Beach', '606 New Toronto Street, Toronto, ON M8V 2E8']
-    ];
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
-      center: new google.maps.LatLng(43.253205,-80.480347),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+function initMap(data) {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 9,
+    center: {lat: -26.2041028, lng: 28.0473051}
+  });
+  
+  var geocoder = new google.maps.Geocoder();
+  var addresses = customerAddresses(data);
+  
+    addresses.map(function(address) {
+      geocodeAddress(address, geocoder, map);
     });
-
-    var infowindow = new google.maps.InfoWindow();
-    var geocoder = new google.maps.Geocoder();
-
-    var marker, i;
-
-    for (i = 0; i < locations.length; i++) {
-      geocodeAddress(map, geocoder, locations[i]);
-    }
 }
 
-function geocodeAddress(map, geocoder, location) {
-  geocoder.geocode( { 'address': location[1]}, function(results, status) {
-  //alert(status);
-    if (status == google.maps.GeocoderStatus.OK) {
-
-      //alert(results[0].geometry.location);
-      map.setCenter(results[0].geometry.location);
-      createMarker(results[0].geometry.location,location[0]+"<br>"+location[1]);
+function geocodeAddress(address, geocoder, resultsMap) {
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === 'OK') {
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      console.log('Geocode was not successful for the following reason: ' + status);
     }
-    else
-    {
-      alert("some problem in geocode" + status);
-    }
-  }); 
+  });
 }
 
-function createMarker(latlng,html){
-  var marker = new google.maps.Marker({
-    position: latlng,
-    map: map
-  }); 
-
-  google.maps.event.addListener(marker, 'mouseover', function() { 
-    infowindow.setContent(html);
-    infowindow.open(map, marker);
-  });
-		
-  google.maps.event.addListener(marker, 'mouseout', function() { 
-    infowindow.close();
-  });
+function customerAddresses(data) {
+  var customerAddressArray = [];
+  var i;
+  for(i = 0; i < data.length; i++) {
+    if( data[i].address.length > 0 ) {
+      customerAddressArray.push(data[i].address);
+    }
+  }
+  return customerAddressArray;
 }
