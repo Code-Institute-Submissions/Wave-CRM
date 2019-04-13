@@ -6,9 +6,8 @@ function loadDoc() {
     if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(this.responseText);
       var prettyData = data.data.business.customers.edges.map(transformData);
-//      useData(prettyData);
       initMap(prettyData);
-      makeGraphs(prettyData)
+      makeGraphs(prettyData);
     }
   };
   
@@ -50,73 +49,35 @@ function transformData(item, index) {
     mobile: item.node.mobile,
     notes: item.node.internalNotes,
     created: item.node.createdAt.slice(0, 4),
-    address: item.node.address.addressLine1
+    address: item.node.address.addressLine1,
+    lat: 0,
+    lng: 0
   };
   return customers;
 }
 
-// function useData(data) {
-//   var i;
-//   for(i = 0; i < data.length; i++) {
-//     document.getElementById("table-body").innerHTML += `
-//       <tr id="${data[i].id}">
-//           <th scope="row">${i + 1}</th>
-//           <td class="company">${data[i].name}</td>
-//           <td class="first-name">${data[i].firstName}</td>
-//           <td class="last-name">${data[i].lastName}</td>
-//           <td class="mobile">${data[i].mobile}</td>
-//           <td class="address">${data[i].address}</td>
-//       </tr>
-//     `;
-//   }
-// }
-
 function initMap(data) {
+  var geocoder = new google.maps.Geocoder();
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 9,
     center: {lat: -26.2041028, lng: 28.0473051}
   });
   
-  var geocoder = new google.maps.Geocoder();
-  var addresses = customerAddresses(data);
-  
-  var markers = addresses.map(function(address) {
-    geocodeAddress(address, geocoder, map);
-  });
-}
-
-function geocodeAddress(address, geocoder, resultsMap) {
-  geocoder.geocode({'address': address}, function(results, status) {
-    if (status === 'OK') {
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
+  data.map(function( item ) {
+    if (item.address.length > 1) {
+      geocoder.geocode( { 'address': item.address}, function(results, status) {
+        if (status == 'OK') {
+          var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
       });
-    } else {
-      console.log('Geocode was not successful for the following reason: ' + status);
     }
   });
 }
-
-function customerAddresses(data) {
-  var customerAddressArray = [];
-  var i;
-  for(i = 0; i < data.length; i++) {
-    if( data[i].address.length > 0 ) {
-      customerAddressArray.push(data[i].address);
-    }
-  }
-  return customerAddressArray;
-}
-
-
-
-
-
-
-
-
-
     
 function makeGraphs(data) {
     
@@ -125,7 +86,7 @@ function makeGraphs(data) {
   pieChart(ndx);
   barChart(ndx);
   table(ndx);
-    
+  
   dc.renderAll();
 
 }
@@ -179,7 +140,5 @@ function table(ndx) {
       function(d) { return d.lastName; },
       function(d) { return d.mobile; },
       function(d) { return d.address; }
-//      function(d) { return numberFormat(d.high - d.low); },
-//      function(d) { return d.volume; }
     ]);
 }
