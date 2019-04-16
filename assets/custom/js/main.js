@@ -25,9 +25,10 @@ function loadDoc() {
                         name
                         firstName
                         lastName
-                        mobile
                         internalNotes
                         createdAt
+                        website
+                        modifiedAt
                         address {
                           addressLine1
                         }
@@ -40,15 +41,16 @@ function loadDoc() {
           );
 }
 
-function transformData(item, index) {
+function transformData(item) {
   var customers = {
     id: item.node.id, 
     name: item.node.name, 
     firstName: item.node.firstName,
     lastName: item.node.lastName,
-    mobile: item.node.mobile,
     notes: item.node.internalNotes,
     created: item.node.createdAt.slice(0, 4),
+    website: function() { if(item.node.website != "") { return "Yes";} else { return "No";}}(),
+    modified: item.node.modifiedAt,
     address: item.node.address.addressLine1,
     lat: 0,
     lng: 0
@@ -63,7 +65,7 @@ function initMap(data) {
     center: {lat: -26.2041028, lng: 28.0473051}
   });
   
-  data.map(function( item ) {
+  data.map(function( item, index ) {
     if (item.address.length > 1) {
       geocoder.geocode( { 'address': item.address}, function(results, status) {
         if (status == 'OK') {
@@ -83,12 +85,22 @@ function makeGraphs(data) {
     
   var ndx = crossfilter(data);
   
+  has_website(ndx);
   pieChart(ndx);
   barChart(ndx);
   table(ndx);
   
   dc.renderAll();
 
+}
+
+function has_website(ndx) {
+    var dim = ndx.dimension(dc.pluck('website'));
+    var group = dim.group();
+    
+    dc.selectMenu("#website-selector")
+        .dimension(dim)
+        .group(group);
 }
 
 function barChart(ndx) {
@@ -134,11 +146,10 @@ function table(ndx) {
     .dimension(dim)
     .group(
       function (data) { return ''; })
-    .columns([//'Name', 'Notes'
+    .columns([
       function(d) { return d.name; },
       function(d) { return d.firstName; },
       function(d) { return d.lastName; },
-      function(d) { return d.mobile; },
       function(d) { return d.address; }
     ]);
 }
