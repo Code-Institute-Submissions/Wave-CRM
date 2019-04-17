@@ -88,7 +88,7 @@ function makeGraphs(data) {
   has_website(ndx);
   pieChart(ndx);
   barChart(ndx);
-  table(ndx);
+  table(ndx, 10);
   
   dc.renderAll();
 
@@ -100,7 +100,8 @@ function has_website(ndx) {
     
     dc.selectMenu("#website-selector")
         .dimension(dim)
-        .group(group);
+        .group(group)
+        .order(function (a,b) { return a.value > b.value ? 1 : b.value > a.value ? -1 : 0;});
 }
 
 function barChart(ndx) {
@@ -138,14 +139,13 @@ function pieChart(ndx) {
 
 function table(ndx) {
   var dim = ndx.dimension(dc.pluck('name'));
-  var group = dim.group();
   
-  dc.dataTable("#table")
+  dc.dataTable("#table")  
     .width(500)
     .height(500)
     .dimension(dim)
-    .group(
-      function (data) { return ''; })
+    .sortBy(function(d){ return d.State ; })
+    .group(function (data) { return ''; })
     .columns([
       function(d) { return d.name; },
       function(d) { return d.firstName; },
