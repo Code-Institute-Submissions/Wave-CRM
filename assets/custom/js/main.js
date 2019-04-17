@@ -28,7 +28,6 @@ function loadDoc() {
                         internalNotes
                         createdAt
                         website
-                        modifiedAt
                         address {
                           addressLine1
                         }
@@ -43,18 +42,18 @@ function loadDoc() {
 
 function transformData(item) {
   var customers = {
-    id: item.node.id, 
+    id: item.node.id,
     name: item.node.name, 
     firstName: item.node.firstName,
     lastName: item.node.lastName,
     notes: item.node.internalNotes,
     created: item.node.createdAt.slice(0, 4),
     website: function() { if(item.node.website != "") { return "Yes";} else { return "No";}}(),
-    modified: item.node.modifiedAt,
     address: item.node.address.addressLine1,
     lat: 0,
     lng: 0
   };
+
   return customers;
 }
 
