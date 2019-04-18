@@ -15,6 +15,10 @@
 </head>
 <body onload="loadDoc()">
     
+    <div id="loader">
+        <img src="assets/custom/images/loading.gif"></img>
+    </div>
+    
     <nav class="navbar navbar-dark bg-dark">
       <h4>Wave CRM</h4>
       <ul class="nav justify-content-end">
@@ -30,7 +34,10 @@
         </ul>
     </nav>
     <main class="container">
-        <section class="row">
+        <section class="row charts">
+            <div class="col-12">
+                <h2>Customer Graphs</h2>
+            </div>
             <div class="col-6">
                 <div id="bar-chart"></div>
             </div>

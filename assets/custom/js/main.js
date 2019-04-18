@@ -6,6 +6,8 @@ function loadDoc() {
     if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(this.responseText);
       var prettyData = data.data.business.customers.edges.map(transformData);
+      $("#loader").addClass("hideLoader");
+      
       initMap(prettyData);
       makeGraphs(prettyData);
     }
@@ -110,14 +112,14 @@ function barChart(ndx) {
   dc.barChart("#bar-chart")
     .width(350)
     .height(250)
-    .margins({top: 10, right: 50, bottom: 30, left: 50})
+    .margins({top: 30, right: 50, bottom: 45, left: 40})
     .dimension(dim)
     .group(group)
-    .transitionDuration(500)
+    .transitionDuration(1000)
     .x(d3.scale.ordinal())
     .xUnits(dc.units.ordinal)
-    .xAxisLabel("Year customer was created")
-    .yAxisLabel("Number of customers")
+    .xAxisLabel("Customer created")
+    .yAxisLabel("# of customers")
     .yAxis().ticks(10);
 }
 
@@ -128,6 +130,7 @@ function pieChart(ndx) {
   dc.pieChart("#pie-chart")
     .width(200)
     .height(200)
+    .transitionDuration(1000)
     .innerRadius(25)
     .label(function(d) {
 				return d.key; 

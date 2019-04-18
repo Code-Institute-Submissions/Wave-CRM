@@ -18,6 +18,37 @@ a:hover {
     color: #ffc107;
 }
 
+#loader {
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: #181F27;
+    display: flex;
+    justify-content: center;
+}
+
+#loader img {
+    align-self: center;
+    width: 480px;
+    height: 360px;
+}
+
+.hideLoader {
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+     opacity: 0;
+}
+
+.charts .col-6 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 #map {
     height: 500px;
     width: 100%;
