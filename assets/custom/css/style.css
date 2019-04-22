@@ -34,12 +34,50 @@ h3 i {
     font-size: 0.8em;
 }
 
+h3 i:hover {
+    opacity: 0.8;
+}
+
+.btn {
+    font-weight: 700;
+}
+
 .popover-header {
     color: #212529;
 }
 
 .table .thead-dark th {
     background-color: #2C3E50;
+}
+
+.col-form-label {
+    color: #fff;
+    float: left;
+    font-size: 1.171875rem;
+    font-weight: 700;
+}
+
+footer i {
+    font-size: 24px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding-top: 8px;
+    text-align: center;
+    background-color: #fff;
+    color: #2C3E50;
+}
+
+footer i:hover {
+    background-color: #ffc107;
+}
+
+.fa-linkedin-in, .fa-github {
+    padding-left: 1px;
+}
+
+.fa-desktop {
+    padding-right: 1px;
 }
 
 #loader {

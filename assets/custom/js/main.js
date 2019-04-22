@@ -1,3 +1,7 @@
+$(function () {
+  $('[data-toggle="popover"]').popover();
+})
+
 function loadDoc() {
   
   var xhttp = new XMLHttpRequest();
@@ -162,7 +166,3 @@ function table(ndx) {
       function(d) { return d.address; }
     ]);
 }
-
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
