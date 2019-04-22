@@ -162,3 +162,7 @@ function table(ndx) {
       function(d) { return d.address; }
     ]);
 }
+
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})

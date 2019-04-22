@@ -30,6 +30,14 @@ a:hover {
     float: right;
 }
 
+h3 i {
+    font-size: 0.8em;
+}
+
+.popover-header {
+    color: #212529;
+}
+
 .table .thead-dark th {
     background-color: #2C3E50;
 }
