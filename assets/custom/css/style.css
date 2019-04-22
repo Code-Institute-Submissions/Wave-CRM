@@ -18,6 +18,18 @@ a:hover {
     color: #ffc107;
 }
 
+.charts-heading {
+    border-left: 15px solid #ffc107;
+}
+
+.bg-grey {
+    background-color: #d3dcde;
+}
+
+.table .thead-dark th {
+    background-color: #2C3E50;
+}
+
 #loader {
     position: fixed;
     z-index: 1;

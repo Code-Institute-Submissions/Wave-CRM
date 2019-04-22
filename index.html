@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="This is a single page application that pulls customer data from your Wave Accounting package to provide a better visualisation of your data in graphs, table and map format">
     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libraries/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="assets/libraries/css/dc.min.css" type="text/css" />
     <link rel="stylesheet" href="assets/custom/css/style.css" type="text/css" />
     
@@ -19,7 +19,7 @@
         <img src="assets/custom/images/loading.gif"></img>
     </div>
     
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-primary">
       <h4>Wave CRM</h4>
       <ul class="nav justify-content-end">
           <li class="nav-item">
@@ -34,24 +34,27 @@
         </ul>
     </nav>
     <main class="container">
-        <section class="row charts">
-            <div class="col-12">
-                <h2>Customer Graphs</h2>
+        <section class="row charts mt-5">
+            <div class="col-12 charts-heading bg-primary">
+                <h3>Customer Graphs</h3>
             </div>
-            <div class="col-6">
+            <div class="col-6 bg-light">
                 <div id="bar-chart"></div>
             </div>
-            <div class="col-6">
+            <div class="col-6 bg-grey">
                 <div id="pie-chart"></div>
             </div>
         </section>
-        <section class="row">
+        <section class="row mt-5">
+            <div class="col-12 charts-heading bg-primary">
+                <h3>Customer Table</h3>
+            </div>
             <table id="table" class="table table-bordered">
-                <div class="bg-dark col-12">
+                <div class="bg-primary col-12">
                     <div id="website-selector"></div>
                     <button type="button" class="btn btn-success">ADD NEW</button>
                 </div>
-                <thead class="thead-dark">
+                <thead class="bg-primary thead-dark">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Company</th>
@@ -63,11 +66,14 @@
             </table>
         </section>
 
-        <section class="row">
+        <section class="row mt-5">
+            <div class="col-12 charts-heading bg-primary">
+                <h3>Customer Map</h3>
+            </div>
             <div id="map"></div>
         </section>
     </main>
-    <footer class="bg-dark">
+    <footer class="bg-primary mt-5">
         <a href="linkedin">
             <i>LinkedIn</i>
         </a>
@@ -87,7 +93,6 @@
 	<script type="text/javascript" src="assets/libraries/js/dc.min.js"></script>
 	<script type="text/javascript" src="assets/libraries/js/queue.min.js"></script>
     <script type="text/javascript" src="assets/custom/js/main.js"></script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUv0f5zfaQJ_7fEv4Lee2Xz592Vt0Cwmg"></script>
     
 </body>
