@@ -26,6 +26,10 @@ a:hover {
     background-color: #d3dcde;
 }
 
+#add-customer-btn {
+    float: right;
+}
+
 .table .thead-dark th {
     background-color: #2C3E50;
 }

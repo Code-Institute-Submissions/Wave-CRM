@@ -97,6 +97,7 @@ function makeGraphs(data) {
   table(ndx, 10);
   
   dc.renderAll();
+  $(".dc-select-menu").addClass("custom-select");
 
 }
 
