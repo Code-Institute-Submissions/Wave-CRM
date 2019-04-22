@@ -5,7 +5,7 @@ function loadDoc() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(this.responseText);
-      var prettyData = data.data.business.customers.edges.map(transformData);
+      var prettyData = data.data.business.customers.edges.map(function(item, i) { return transformData(item, i); });
       $("#loader").addClass("hideLoader");
       
       initMap(prettyData);
@@ -42,9 +42,11 @@ function loadDoc() {
           );
 }
 
-function transformData(item) {
+function transformData(item, i) {
+
   var customers = {
     id: item.node.id,
+    index: i + 1,
     name: item.node.name, 
     firstName: item.node.firstName,
     lastName: item.node.lastName,
@@ -150,6 +152,7 @@ function table(ndx) {
     .sortBy(function(d){ return d.State ; })
     .group(function (data) { return ''; })
     .columns([
+      function(d) { return d.index; },
       function(d) { return d.name; },
       function(d) { return d.firstName; },
       function(d) { return d.lastName; },
