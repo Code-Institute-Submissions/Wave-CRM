@@ -79,9 +79,8 @@ function initMap(data) {
           var marker = new google.maps.Marker({
             map: map,
             position: results[0].geometry.location,
-            label: item.index.toString(),
+            label: {text: item.index.toString(), color: "white"},
             zIndex: item.index
-//            icon: { url: "https://maps.google.com/mapfiles/ms/icons/homegardenbusiness.png" }
           });
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
