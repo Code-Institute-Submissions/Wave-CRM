@@ -74,7 +74,9 @@ function initMap(data) {
         if (status == 'OK') {
           var marker = new google.maps.Marker({
             map: map,
-            position: results[0].geometry.location
+            position: results[0].geometry.location,
+            label: item.index.toString(),
+            zIndex: item.index
 //            icon: { url: "https://maps.google.com/mapfiles/ms/icons/homegardenbusiness.png" }
           });
         } else {
