@@ -14,7 +14,7 @@ a {
     font-weight: 700;
 }
 
-a:hover {
+.navbar-dark .navbar-nav .nav-link:hover {
     color: #ffc107;
 }
 
@@ -27,7 +27,7 @@ a:hover {
 }
 
 #add-customer-btn {
-    float: right;
+    text-align: center;
 }
 
 h3 i {
@@ -72,13 +72,10 @@ footer i:hover {
     background-color: #ffc107;
 }
 
-/*.fa-linkedin-in, .fa-github {*/
-/*    padding-left: 1px;*/
-/*}*/
-
-/*.fa-desktop {*/
-/*    padding-right: 1px;*/
-/*}*/
+.select-group {
+    display: flex;
+    justify-content: center;
+}
 
 #loader {
     position: fixed;
@@ -102,7 +99,7 @@ footer i:hover {
     transition: visibility 1s linear,opacity 1s linear; 
 }
 
-.charts .col-6 {
+.charts .col-md-6 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -116,4 +113,13 @@ footer i:hover {
 
 .dc-table-group {
   visibility: collapse;
+}
+
+@media (min-width: 768px) {
+    #add-customer-btn {
+        text-align: right;
+    }
+    .select-group {
+        justify-content: flex-start;
+}
 }

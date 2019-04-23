@@ -45,10 +45,10 @@
             <div class="col-12 charts-heading bg-primary">
                 <h3>Customer Graphs</h3>
             </div>
-            <div class="col-6 bg-light">
+            <div class="col-md-6 bg-light pb-2">
                 <div id="bar-chart"></div>
             </div>
-            <div class="col-6 bg-grey">
+            <div class="col-md-6 bg-grey pt-3 pb-3">
                 <div id="pie-chart"></div>
             </div>
         </section>
@@ -56,24 +56,31 @@
             <div class="col-12 charts-heading bg-primary">
                 <h3>Customer Table</h3>
             </div>
-            <table id="table" class="table table-bordered">
-                <div class="bg-primary col-12 pt-2 pb-2">
-                    <label for="website-selector" class="col-form-label pr-2">Website:</label>
-                    <div id="website-selector"></div>
-                    <div id="add-customer-btn">
+            <div class="col-12 bg-primary">
+                <div class="row">
+                    <div class="select-group col-sm-6 pt-2 pb-2">
+                        <label for="website-selector" class="col-form-label pr-2">Website:</label>
+                        <div id="website-selector" class=""></div>
+                    </div>
+                    <div id="add-customer-btn" class="col-sm-6 pb-2">
                         <button type="button" class="btn btn-warning">ADD NEW</button>
                     </div>
                 </div>
-                <thead class="bg-primary thead-dark">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Company</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Address</th>
-                    </tr>
-                </thead>
-            </table>
+            </div>
+            <div class="table-responsive">
+                <table id="table" class="table table-bordered">
+                    
+                    <thead class="bg-primary thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Address</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </section>
 
         <section class="row mt-5">
