@@ -72,13 +72,13 @@ footer i:hover {
     background-color: #ffc107;
 }
 
-.fa-linkedin-in, .fa-github {
-    padding-left: 1px;
-}
+/*.fa-linkedin-in, .fa-github {*/
+/*    padding-left: 1px;*/
+/*}*/
 
-.fa-desktop {
-    padding-right: 1px;
-}
+/*.fa-desktop {*/
+/*    padding-right: 1px;*/
+/*}*/
 
 #loader {
     position: fixed;
