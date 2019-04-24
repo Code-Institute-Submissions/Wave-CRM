@@ -100,27 +100,54 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header bg-primary">
-            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <h5 class="modal-title" id="exampleModalLabel">ADD NEW CUSTOMER</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                <input type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="form-group">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="message-text"></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-warning">Save</button>
-          </div>
+          <form method="post">
+            <div class="modal-body">
+                <div class="form-group">
+                    <input id="businessName" type="text" class="form-control" placeholder="Business Name" required>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6 mb-3">
+                        <input id="firstName" type="text" class="form-control" placeholder="First Name" required>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <input id="lastName" type="text" class="form-control" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6 mb-3">
+                        <input id="emailAddress" type="text" class="form-control" placeholder="Email Address" required>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <input id="phoneNumber" type="tel" class="form-control" placeholder="Phone Number" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-sm-6 mb-3">
+                        <select id="customerStatus" class="custom-select" required>
+                            <option disabled>Select customer status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <input id="webAddress" type="text" class="form-control" placeholder="Web Address (www.website.com)" pattern="(?=.*\.).{5,}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input id="physicalAddress" class="form-control" placeholder="Physical Address" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="submitModal" type="submit" class="btn btn-warning" onclick="addCustomer()">Save</button>
+            </div>
+          </form>
+          
         </div>
       </div>
     </div>

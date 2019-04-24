@@ -10,6 +10,9 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('.modal-title').text('New message to ' + recipient);
   modal.find('.modal-body input').val(recipient);
+  
+
+    
 });
 
 function loadDoc() {
@@ -175,3 +178,92 @@ function table(ndx) {
       function(d) { return d.address; }
     ]);
 }
+
+
+
+
+
+function customerInput() {
+    var customerVariables = {
+      "input": {
+        "businessId": "QnVzaW5lc3M6NjNiOTVkZGItNWRkOS00MzI0LWEzNGYtMDkxOTJmNjNjNDc0", 
+        "name": $("#businessName").val(), 
+        "firstName": $("#firstName").val(), 
+        "lastName": $("#lastName").val(), 
+        "email": $("#emailAddress").val(),
+        "mobile": $("#phoneNumber").val(),
+        "internalNotes": $("#customerStatus").val(),
+        "website": $("#webAddress").val(),
+        "currency": "ZAR", 
+        "address": {
+          "addressLine1": $("#physicalAddress").val()
+        }
+      }
+    };
+    console.log(customerVariables);
+    return customerVariables;
+}
+
+
+
+
+
+
+function addCustomer() {
+  
+  var xhttp = new XMLHttpRequest();
+  
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var data = JSON.parse(this.responseText);
+      if(data.data.customerCreate.didSucceed == true) {
+        alert("New customer created");
+      } else {
+        console.log(this.responseText);
+      }
+    }
+  };
+  
+  xhttp.open("POST", "https://gql.waveapps.com/graphql/public", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.setRequestHeader('Accept', 'application/json');
+  xhttp.setRequestHeader('Authorization', 'Bearer 8NBKTN3t9pfYUS0GsEoNapjY6ooRbi');
+  xhttp.send(JSON.stringify({
+              query: `mutation($input: CustomerCreateInput!) { 
+                customerCreate(input: $input) {
+                  didSucceed
+                  inputErrors {
+                    code
+                    message
+                    path
+                  }
+                  customer {
+                    id
+                    name
+                    firstName
+                    lastName
+                    email
+                    currency {
+                      code
+                    }
+                  }
+                }
+              }`,
+              variables: customerInput()
+            })
+          );
+}
+
+
+// variables: {
+//                 "input": {
+//                   "businessId": "QnVzaW5lc3M6NjNiOTVkZGItNWRkOS00MzI0LWEzNGYtMDkxOTJmNjNjNDc0",
+//                   "name": "James Consulting",
+//                   "firstName": "Jane",
+//                   "lastName": "Smith",
+//                   "email": "jsmith@example.com",
+//                   "currency": "CAD"
+//                 }
+//               }
+
+console.log({"input": {"businessId": "QnVzaW5lc3M6NjNiOTVkZGItNWRkOS00MzI0LWEzNGYtMDkxOTJmNjNjNDc0", "name": "James Consulting", "firstName": "Jane", "lastName": "Smith", "email": "jsmith@example.com", "currency": "CAD"}});
