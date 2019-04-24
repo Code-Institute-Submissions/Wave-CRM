@@ -105,6 +105,14 @@ footer i:hover {
     align-items: center;
 }
 
+.modal .close:not(:disabled):not(.disabled):hover,
+.modal .close {
+    color: #fff;
+}
+
+.modal-body .col-form-label {
+    color: #2C3E50;
+}
 
 #map {
     height: 500px;
