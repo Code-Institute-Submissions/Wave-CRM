@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!--Meta Information-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="This is a single page application that pulls customer data from your Wave Accounting package to provide a better visualisation of your data in graphs, table and map format">
+    <title>WAVE CRM</title>
     
+    <!--Stylesheets-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <link rel="stylesheet" href="assets/libraries/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="assets/libraries/css/dc.min.css" type="text/css" />
     <link rel="stylesheet" href="assets/custom/css/style.css" type="text/css" />
-    
-    <title>Document</title>
+
 </head>
 <body onload="loadDoc()">
     
+    <!--This element displays the loading screen while the data is still being loaded and hides when complete-->
     <div id="loader">
-        <img src="assets/custom/images/loading.gif"></img>
+        <img alt="page loading..." src="assets/custom/images/loading.gif"></img>
     </div>
     
+    <!--This element displays the page navigation with a burger menu for mobile views-->
     <nav class="navbar navbar-dark navbar-expand-lg bg-primary">
         <h4>Wave CRM</h4>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,6 +45,8 @@
     </nav>
     
     <main class="container">
+        
+        <!--This section displays the customer graphs (pie chart and bar chart), actual graph content rendered by graph functions in main.js-->
         <section class="row charts mt-5">
             <div class="col-12 charts-heading bg-primary">
                 <h3>Customer Graphs</h3>
@@ -52,17 +58,19 @@
                 <div id="pie-chart"></div>
             </div>
         </section>
+        
+        <!--This section displays the customer table, the tbody is rendered by the table function in main.js-->
         <section class="row mt-5">
             <div class="col-12 charts-heading bg-primary">
                 <h3>Customer Table</h3>
             </div>
             <div class="col-12 bg-primary">
                 <div class="row">
-                    <div class="select-group col-sm-6 pt-2 pb-2">
-                        <label for="website-selector" class="col-form-label pr-2">Website:</label>
-                        <div id="website-selector" class=""></div>
+                    <div class="select-group col-6 pt-2 pb-2">
+                        <label for="website-selector" class="col-form-label pr-2 d-none d-sm-block">Website:</label>
+                        <div id="website-selector"></div>
                     </div>
-                    <div class="col-sm-6 pb-2 add-customer-btn">
+                    <div class="col-6 pt-2 pb-2 add-customer-btn">
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#customerModal">ADD NEW</button>
                     </div>
                 </div>
@@ -83,19 +91,24 @@
             </div>
         </section>
 
+        <!--This section displays the Google map and has an info popover to provide more information on the map-->
         <section class="row mt-5">
             <div class="col-12 charts-heading bg-primary">
                 <h3>Customer Map <i class="fas fa-info-circle" data-toggle="popover" title="Information" data-content="All customer addresses are shown on the map despite filtering above."></i></h3>
             </div>
             <div id="map" class="col-12"></div>
         </section>
+        
     </main>
+    
+    <!--This is the footer of the website which displays the social media icons-->
     <footer class="bg-primary mt-5 pt-3 pb-3 text-center">
         <a href="https://www.linkedin.com/in/ferenc-kovacs-06190671/" target="_blank" rel="noopener" aria-label="Visit my LinkedIn page"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/K0vacs/" target="_blank" class="pl-4 pr-4" rel="noopener" aria-label="Visit my GitHub page"><i class="fab fa-github"></i></a>
         <a href="https://k0vacs.github.io/Ferenc-Kovacs-Resume/" target="_blank" rel="noopener" aria-label="Visit my website"><i class="fas fa-desktop"></i></a>
     </footer>
-
+    
+    <!--This is the modal box that pops up when the add new button is clicked-->
     <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -129,7 +142,7 @@
                 <div class="form-row">
                     <div class="col-sm-6 mb-3">
                         <select id="customerStatus" class="custom-select" required>
-                            <option disabled>Select customer status</option>
+                            <option value="Active" disabled>Select customer status</option>
                             <option value="Active">Active</option>
                             <option value="Inactive">Inactive</option>
                         </select>
@@ -152,15 +165,16 @@
       </div>
     </div>
 
-<!--BODY END    -->
+<!--BODY END-->
+<!--Scripts-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="assets/libraries/js/d3.min.js"></script>
-	<script type="text/javascript" src="assets/libraries/js/crossfilter.min.js"></script>
-	<script type="text/javascript" src="assets/libraries/js/dc.min.js"></script>
-	<script type="text/javascript" src="assets/libraries/js/queue.min.js"></script>
-    <script type="text/javascript" src="assets/custom/js/main.js"></script>
+    <script src="assets/libraries/js/d3.min.js"></script>
+	<script src="assets/libraries/js/crossfilter.min.js"></script>
+	<script src="assets/libraries/js/dc.min.js"></script>
+	<script src="assets/libraries/js/queue.min.js"></script>
+    <script src="assets/custom/js/main.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUv0f5zfaQJ_7fEv4Lee2Xz592Vt0Cwmg"></script>
     
 </body>

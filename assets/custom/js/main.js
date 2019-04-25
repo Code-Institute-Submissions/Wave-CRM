@@ -4,6 +4,7 @@ Wave API return customer list
 The loadDoc function makes a request to the Wave API for customer information. 
 Once a successful response is recieved, multiple functions are called with the returned data passed as a parameter.
 This function is called when the index.html page loads (on body tag).
+The Authorization key used is from a test account
 */
 
 function loadDoc() {
@@ -249,6 +250,7 @@ Wave API create new customer
 The addCustomer function makes a request to the Wave API to create a new customer record.
 Once a response is recieved, success will trigger a success message and failure wil trigger a failure message.
 This function is called when the modal save button is submitted.
+The Authorization key used is from a test account
 */
 
 function addCustomer() {

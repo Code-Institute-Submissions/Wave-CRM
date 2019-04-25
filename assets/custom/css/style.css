@@ -65,7 +65,7 @@ h3 i:hover {
     border-left: 15px solid #ffc107;
 }
 
-.charts .col-md-6 {
+.charts .col-6 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,11 +88,11 @@ h3 i:hover {
 
 .select-group {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .add-customer-btn {
-    text-align: center;
+    text-align: right;
 }
 
 .btn {
@@ -136,15 +136,4 @@ footer i:hover {
 
 .modal-body .col-form-label {
     color: #2C3E50;
-}
-
-/*--------------- Media Queries ----------------*/
-
-@media (min-width: 768px) {
-    #add-customer-btn {
-        text-align: right;
-    }
-    .select-group {
-        justify-content: flex-start;
-    }
 }
