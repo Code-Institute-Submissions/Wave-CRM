@@ -20,7 +20,7 @@
     
     <!--This element displays the loading screen while the data is still being loaded and hides when complete-->
     <div id="loader">
-        <img alt="page loading..." src="assets/custom/images/loading.gif"></img>
+        <img alt="page loading..." src="assets/custom/images/loading.gif" />
     </div>
     
     <!--This element displays the page navigation with a burger menu for mobile views-->
@@ -67,7 +67,7 @@
             <div class="col-12 bg-primary">
                 <div class="row">
                     <div class="select-group col-6 pt-2 pb-2">
-                        <label for="website-selector" class="col-form-label pr-2 d-none d-sm-block">Website:</label>
+                        <span class="col-form-label pr-2 d-none d-sm-block">Website:</span>
                         <div id="website-selector"></div>
                     </div>
                     <div class="col-6 pt-2 pb-2 add-customer-btn">
@@ -133,7 +133,7 @@
                 </div>
                 <div class="form-row">
                     <div class="col-sm-6 mb-3">
-                        <input id="emailAddress" type="text" class="form-control" placeholder="Email Address" required>
+                        <input id="emailAddress" type="email" class="form-control" placeholder="Email Address" required>
                     </div>
                     <div class="col-sm-6 mb-3">
                         <input id="phoneNumber" type="tel" class="form-control" placeholder="Phone Number" required>
@@ -142,13 +142,13 @@
                 <div class="form-row">
                     <div class="col-sm-6 mb-3">
                         <select id="customerStatus" class="custom-select" required>
-                            <option value="Active" disabled>Select customer status</option>
+                            <option value="" disabled selected>Customer Status</option>
                             <option value="Active">Active</option>
                             <option value="Inactive">Inactive</option>
                         </select>
                     </div>
                     <div class="col-sm-6 mb-3">
-                        <input id="webAddress" type="text" class="form-control" placeholder="Web Address (www.website.com)" pattern="(?=.*\.).{5,}" required>
+                        <input id="webAddress" type="url" class="form-control" placeholder="Web Address (http://www.website.com)" pattern="(?=.*\.).{5,}" title="Full url required (http://www.website.com)" required>
                     </div>
                 </div>
                 <div class="form-group">

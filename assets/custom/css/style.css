@@ -65,7 +65,7 @@ h3 i:hover {
     border-left: 15px solid #ffc107;
 }
 
-.charts .col-6 {
+.charts .col-md-6 {
     display: flex;
     justify-content: center;
     align-items: center;
