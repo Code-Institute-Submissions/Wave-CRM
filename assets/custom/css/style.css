@@ -1,4 +1,5 @@
 /*--------------- Default Styles ----------------*/
+
 body {
     font-family: 'Montserrat', sans-serif;
 }
@@ -14,22 +15,6 @@ a {
     font-weight: 700;
 }
 
-.navbar-dark .navbar-nav .nav-link:hover {
-    color: #ffc107;
-}
-
-.charts-heading {
-    border-left: 15px solid #ffc107;
-}
-
-.bg-grey {
-    background-color: #d3dcde;
-}
-
-#add-customer-btn {
-    text-align: center;
-}
-
 h3 i {
     font-size: 0.8em;
 }
@@ -38,44 +23,13 @@ h3 i:hover {
     opacity: 0.8;
 }
 
-.btn {
-    font-weight: 700;
+/*--------------- Background Colours ----------------*/
+
+.bg-grey {
+    background-color: #d3dcde;
 }
 
-.popover-header {
-    color: #212529;
-}
-
-.table .thead-dark th {
-    background-color: #2C3E50;
-}
-
-.col-form-label {
-    color: #fff;
-    float: left;
-    font-size: 1.171875rem;
-    font-weight: 700;
-}
-
-footer i {
-    font-size: 24px;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    padding-top: 8px;
-    text-align: center;
-    background-color: #fff;
-    color: #2C3E50;
-}
-
-footer i:hover {
-    background-color: #ffc107;
-}
-
-.select-group {
-    display: flex;
-    justify-content: center;
-}
+/*--------------- Loader Styles ----------------*/
 
 #loader {
     position: fixed;
@@ -99,11 +53,81 @@ footer i:hover {
     transition: visibility 1s linear,opacity 1s linear; 
 }
 
+/*--------------- Navbar Styles ----------------*/
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ffc107;
+}
+
+/*--------------- Charts Styles ----------------*/
+
+.charts-heading {
+    border-left: 15px solid #ffc107;
+}
+
 .charts .col-md-6 {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.table .thead-dark th {
+    background-color: #2C3E50;
+}
+
+.col-form-label {
+    color: #fff;
+    float: left;
+    font-size: 1.171875rem;
+    font-weight: 700;
+}
+
+.dc-table-group {
+  visibility: collapse;
+}
+
+.select-group {
+    display: flex;
+    justify-content: center;
+}
+
+.add-customer-btn {
+    text-align: center;
+}
+
+.btn {
+    font-weight: 700;
+}
+
+/*--------------- Map Styles ----------------*/
+
+#map {
+    height: 500px;
+    width: 100%;
+}
+
+.popover-header {
+    color: #212529;
+}
+
+/*--------------- Footer Styles ----------------*/
+
+footer i {
+    font-size: 24px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding-top: 8px;
+    text-align: center;
+    background-color: #fff;
+    color: #2C3E50;
+}
+
+footer i:hover {
+    background-color: #ffc107;
+}
+
+/*--------------- Modal Styles ----------------*/
 
 .modal .close:not(:disabled):not(.disabled):hover,
 .modal .close {
@@ -114,14 +138,7 @@ footer i:hover {
     color: #2C3E50;
 }
 
-#map {
-    height: 500px;
-    width: 100%;
-}
-
-.dc-table-group {
-  visibility: collapse;
-}
+/*--------------- Media Queries ----------------*/
 
 @media (min-width: 768px) {
     #add-customer-btn {
@@ -129,5 +146,5 @@ footer i:hover {
     }
     .select-group {
         justify-content: flex-start;
-}
+    }
 }
