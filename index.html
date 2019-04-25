@@ -105,7 +105,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form method="post">
+          <form onsubmit="addCustomer()">
             <div class="modal-body">
                 <div class="form-group">
                     <input id="businessName" type="text" class="form-control" placeholder="Business Name" required>
@@ -144,7 +144,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="submitModal" type="submit" class="btn btn-warning" onclick="addCustomer()">Save</button>
+                <button id="submitModal" type="submit" class="btn btn-warning" onclick="">Save</button>
             </div>
           </form>
           
