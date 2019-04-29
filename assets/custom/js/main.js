@@ -197,8 +197,8 @@ This function is called from the loadDoc function.
 function initMap(data) {
   var geocoder = new google.maps.Geocoder();
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 9,
-    center: {lat: -26.2041028, lng: 28.0473051}
+    zoom: 10,
+    center: {lat: -26.1089099, lng: 28.0504453}
   });
   
   data.map(function( item, index ) {
@@ -259,11 +259,9 @@ function addCustomer() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(this.responseText);
-      if(data.data.customerCreate.didSucceed == true) {
-        alert("New customer created");
-      } else {
-        alert("New customer NOT created, please make sure the customer information is correct");
+      if(data.data.customerCreate.didSucceed == false) {
         console.log(this.responseText);
+        alert("New customer NOT created, please make sure the customer information is correct");
       }
     }
   };
@@ -276,6 +274,11 @@ function addCustomer() {
     query: `mutation($input: CustomerCreateInput!) { 
       customerCreate(input: $input) {
         didSucceed
+        inputErrors {
+          code
+          message
+          path
+        }
         customer {
           id
           name
