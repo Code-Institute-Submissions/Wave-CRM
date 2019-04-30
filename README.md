@@ -59,9 +59,9 @@ The font used is from [Google Fonts](https://fonts.google.com/), called Montserr
 ### Mockups
 The project mockups are available below and in the mockups directory in both mobile, tablet and desktop views:
 
-![Mobile Mockup]()
-![Tablet Mockup]()
-![Desktop Mockup]()
+![Mobile Mockup](assets/custom/mockups/Mobile.png)
+![Tablet Mockup](assets/custom/mockups/Tablet.png)
+![Desktop Mockup](assets/custom/mockups/Desktop.png)
 
 ## Features
  
@@ -166,8 +166,8 @@ To deploy this application locally:
 - Most elements of this website use [Bootstrap](https://getbootstrap.com/) elements.
 - [Bootswatch](https://bootswatch.com/) was used to customise the Bootstrap colour palette.
 - The fonts were selected from [Google Fonts](https://fonts.google.com/).
-- - The table and graphs are rendered by a combination of [D3](https://dc-js.github.io/dc.js/), [DC](https://d3js.org/) and [Crossfilter](https://square.github.io/crossfilter/).
-- - [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial) was used to render the map to the index.html page.
+- The table and graphs are rendered by a combination of [D3](https://dc-js.github.io/dc.js/), [DC](https://d3js.org/) and [Crossfilter](https://square.github.io/crossfilter/).
+- [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/tutorial) was used to render the map to the index.html page.
 
 ### Acknowledgements
 - [Responsinator](http://www.responsinator.com/) was used to check mobile and tablet responsiveness.
