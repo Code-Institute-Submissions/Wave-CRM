@@ -57,10 +57,18 @@ The font used is from [Google Fonts](https://fonts.google.com/), called Montserr
 > The footer has 3 elements, all centre aligned that are Font Awesome social media icons which are linked to the developers' relevant social media icons.
 
 ### Mockups
-The project mockups are available below and in the mockups directory in both mobile, tablet and desktop views:
+The project mockups are available below and in the mockups directory in mobile, tablet and desktop views:
+
+#### Mobile
 
 ![Mobile Mockup](assets/custom/mockups/Mobile.png)
+
+#### Tablet
+
 ![Tablet Mockup](assets/custom/mockups/Tablet.png)
+
+#### Desktop
+
 ![Desktop Mockup](assets/custom/mockups/Desktop.png)
 
 ## Features
