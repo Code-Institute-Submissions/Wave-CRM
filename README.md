@@ -133,6 +133,7 @@ The following checks were done to ensure the website is working as intended:
 - W3C validator HTML errors fixed
 - W3C validator CSS errors fixed
 - Google Dev Tools Audit run and fixed issues on each page
+- JSHint errors and warnings fixed (for all that were necessary)
 
 ## Deployment
 

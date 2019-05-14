@@ -1,0 +1,12 @@
+{
+    "globals": {
+        "$": false,
+        "dc": false,
+        "XMLHttpRequest": false,
+        "crossfilter": false,
+        "google": false,
+        "d3": false,
+        "document": false,
+        "alert": false
+    }
+}
