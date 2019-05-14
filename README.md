@@ -167,6 +167,14 @@ To deploy this application locally:
 #### Online
 - All dependencies will work as intended by making use of all the files within the repository.
 - When upgrading the dependencies make sure to update the files in the libraries directory and the links within the index.html file.
+
+## Contribute
+Developer contributions are welcomed and encouraged.
+
+To contribute just fork the GitHub repository and when ready create a push request with detailed notes of the changes which will be reviewed and added to the project on success.
+
+Feel free to pick up any of the above-mentioned features left to implement.
+
 ## Credits
 
 ### Content
